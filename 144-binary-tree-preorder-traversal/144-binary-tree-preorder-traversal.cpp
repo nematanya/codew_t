@@ -14,16 +14,31 @@ public:
 
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> t;
-     sol(root,t);
+                  if(!root)
+            return  t ;
+      stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty())
+        {
+            root=st.top();
+            st.pop();
+               t.push_back(root->val);
+            if(root->right!=NULL) st.push(root->right);
+         
+            if(root->left!=NULL) st.push(root->left);
+            
+        }
         return t;
     }
-       void sol(TreeNode* root,vector<int>& t)
-    {
-          if(!root)
-            return ;
-        t.push_back(root->val);
-        sol(root->left,t);
-        sol(root->right,t);
+    //recursive way//
+//        void sol(TreeNode* root,vector<int>& t)
+//     {
+//           if(!root)
+//             return ;
+//         t.push_back(root->val);
+//         sol(root->left,t);
+//         sol(root->right,t);
         
-    }
+//     }
+    
 };
