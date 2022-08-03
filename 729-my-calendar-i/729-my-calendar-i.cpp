@@ -9,9 +9,11 @@ public:
     bool book(int start, int end) {
     for(auto it:ans)
     {
+        
         if(it.first<end and start<it.second)
             return false;
     }
+        //15<20
         ans.push_back({start,end});
         return true;
     }
