@@ -2,16 +2,11 @@ class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
         int n = s.length(), m = words.size(), wl = words[0].size();
-        
         int l = wl*m;
-        
         if(n<l) return {};
-        
         vector<int>ans;
         int start = 0;
         unordered_map<string,int> mp,tmp;
-        
-        
         for(string x : words)
             mp[x]++;
         
