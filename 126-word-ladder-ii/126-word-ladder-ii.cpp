@@ -1,3 +1,4 @@
+
 class Solution {
 public:
 bool able(string s,string t){
@@ -81,3 +82,4 @@ vector<vector<string>> findLadders(string beginWord, string endWord, vector<stri
     return ANS;
 }
 }; 
+//N.A.
