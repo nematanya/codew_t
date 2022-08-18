@@ -7,18 +7,15 @@ public:
             mp[it]++;
         priority_queue<int> pq;
         for(auto it :mp)
-        {
          pq.push(it.second);
-        }
-        int count=0;
-       while(pq.size())
+         int count=0;
+         while(pq.size())
         {
             if(n<=0) break;
             n=n-pq.top();
             pq.pop();
             count++;
         }
-        
         return count;
     }
 };
