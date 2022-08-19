@@ -1,17 +1,20 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        map<int,int> m;
-        for(auto it:nums)
-            m[it]++;
-        int maxi=*max_element (nums.begin(), nums.end());
-        for(int i=1;i<=maxi;i++)
-        {
-            auto t=m.find(i);
-            if(t==m.end()) return i;
+              for(auto &it:nums)
+         if(it<=0) it=nums.size()+1;
+        for(int i=0;i<nums.size();i++)
+        { 
+            int k=abs(nums[i])-1;
+            if(k<0 or k>=nums.size()) continue;
+            nums[k]=-1*(abs(nums[k]));
+            
         }
-        if(maxi<0) return 1;
-        else
-        return maxi+1;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]>0)
+                return i+1;
+        }
+        return nums.size()+1 ;
     }
 };
