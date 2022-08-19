@@ -3,9 +3,7 @@ public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
         vector<int> v;
        for(int i=0;i<nums.size();i++)
-       { int k=abs(nums[i])-1;
-          if(nums[k]>0) nums[k]=-1*nums[k];
-       }
+           nums[abs(nums[i])-1]=-1*(abs(nums[abs(nums[i])-1]));
    
         for(int i=0;i<nums.size();i++)
             if(nums[i]>0)
