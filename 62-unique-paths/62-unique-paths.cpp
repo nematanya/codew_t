@@ -1,13 +1,17 @@
 class Solution {
 public:
-     int solve(int i, int j, int m, int n, vector<vector<int>> &grid){
-        if(i >= m || j >= n) return 0;
-        if(i == m-1 && j == n-1) return 1;
-        if(grid[i][j]) return grid[i][j];
-        return grid[i][j] = solve(i+1,j,m,n,grid)+solve(i,j+1,m,n,grid);        
+    int sol(int i,int j, vector<vector<int>> &dp)
+    {
+        if(i==0 and j==0) return 1;
+        if(i<0 or j<0) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
+        int up=sol(i-1,j,dp);
+        int left=sol(i,j-1,dp);
+        return dp[i][j]=up+left;
     }
     int uniquePaths(int m, int n) {
-        vector<vector<int>>grid(m,vector<int>(n,0));
-         return solve(0,0,m,n,grid);
+        vector<vector<int>> dp(m,vector<int>(n,-1));
+        return  sol(m-1,n-1,dp);
+        
     }
 };
