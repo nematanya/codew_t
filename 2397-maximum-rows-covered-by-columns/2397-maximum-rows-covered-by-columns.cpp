@@ -18,9 +18,9 @@ public:
     }
     int maximumRows(vector<vector<int>>& mat, int cols) {
         int m=mat[0].size();
-       string t(m,'1');
-        for(int i=0;i<m-cols;i++) 
-            t[i]='0';
+       string t(m,'0');
+        for(int i=m-1;i>=m-cols;i--) 
+            t[i]='1';
         int res=0;
         do{
             res=max(res,f(mat,t));
