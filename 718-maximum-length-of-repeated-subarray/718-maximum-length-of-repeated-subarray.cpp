@@ -1,26 +1,25 @@
 class Solution {
 public:
-   int findLength(std::vector<int>& nums1, std::vector<int>& nums2) {
-	const int m = nums1.size(), n = nums2.size();
-	int result = 0;
-	for (int offset = 0; offset < m; offset++) {
-		for (int i = offset, j = 0; i < m && j < n; ) {
-			int count = 0;
-			while (i < m && j < n && nums1[i++] == nums2[j++]) {
-				count++;
-			}
-			result = std::max(result, count);
-		}
-	}
-	for (int offset = 0; offset < n; offset++) {
-		for (int i = 0, j = offset; i < m && j < n; ) {
-			int count = 0;
-			while (i < m && j < n && nums1[i++] == nums2[j++]) {
-				count++;
-			}
-			result = std::max(result, count);
-		}
-	}
-	return result;
-}
+    int findLength(vector<int>& nums1, vector<int>& nums2) {
+        int ans=0;
+     for(int i=0;i<nums1.size();i++)
+     {
+         for(int m=i, n=0;m<nums1.size() and n<nums2.size();)
+         {  int count=0;
+                 while( m<nums1.size() and n<nums2.size() and nums1[m++]==nums2[n++] )
+                        count++;
+              ans=max(ans,count);
+         }
+     }
+           for(int i=0;i<nums2.size();i++)
+     {
+         for(int m=i, n=0;m<nums2.size()and n<nums1.size();)
+         {   int count=0;
+                 while( m<nums2.size() and n<nums1.size() and nums1[n++]==nums2[m++] )
+                        count++;
+              ans=max(ans,count);
+         }
+     }
+        return ans;
+    }
 };
