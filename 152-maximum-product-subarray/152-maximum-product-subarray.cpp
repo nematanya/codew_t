@@ -1,21 +1,18 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int n = nums.size(), res = -1e9;
-        vector<pair<int,int>> dp(n+1);
-        dp[0] = {1,1};
-        for (int i=0;i<n;i++){
-            if (nums[i]<0){
-                dp[i+1].first = max(nums[i] , nums[i]*dp[i].second);
-                dp[i+1].second = min(nums[i] , nums[i]*dp[i].first);
-            }
-            else{
-                dp[i+1].first = max(nums[i] , nums[i]*dp[i].first);
-                dp[i+1].second = min(nums[i] , nums[i]*dp[i].second);
-            }
-            res = max(res,dp[i+1].first);
-            res = max(res,dp[i+1].second);
+ int temp = 1, ans = INT_MIN;
+        for(int i = 0; i < nums.size(); i++){
+            temp *= nums[i];
+            ans = max(temp, ans);
+            if(!temp) temp = 1;
         }
-        return res;
+        temp = 1;
+        for(int i = nums.size()-1; i >= 0; i--){
+            temp *= nums[i];
+            ans = max(temp, ans);
+            if(!temp) temp = 1;
+        }
+        return ans;
     }
 };
