@@ -1,7 +1,9 @@
 class MyCircularQueue {
 public:
-    MyCircularQueue(int k){ arraysize=k; cq.resize(k); }
-    
+    MyCircularQueue(int k){
+    arraysize=k; 
+    cq.resize(k); 
+    }
     bool enQueue(int value) {
         if (isFull()) return false;
         if(isEmpty()){ head=tail=0; cq[tail] = value;  size++; return true; }
