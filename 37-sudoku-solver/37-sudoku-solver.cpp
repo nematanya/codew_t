@@ -1,0 +1,64 @@
+class Solution {
+public:
+    int gi=0;
+    int gj=0;
+    bool allfilled(vector<vector<char>>& board)
+    {
+        for(int i=0;i<9;i++)
+        {
+            for(int j=0;j<9;j++)
+            {
+                if(board[i][j]=='.')
+                {
+                    gi=i;
+                    gj=j;
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    bool issafe(int xi,int xj,char i,vector<vector<char>>& board)
+    {
+        //row
+        for(int col=0;col<9;col++)
+        {
+            if(board[xi][col]==i)
+                return 0;
+        }
+        //column
+        for(int row=0;row<9;row++)
+        {
+            if(board[row][xj]==i)
+                return 0;
+        }
+        //box
+        int sr=xi-(xi%3);
+        int sc=xj-(xj%3);
+        for(int p=0;p<3;p++)
+        {
+            for(int q=0;q<3;q++)
+                if(board[sr+p][sc+q]==i)return 0;
+        }
+        return 1;
+    }
+    bool sol(vector<vector<char>>& board){
+        if(allfilled(board)) return true;
+        else{
+            int x=gi,y=gj;
+        for(char i='1';i<='9';i++)
+        {
+            if(issafe(x,y,i,board))
+            {
+                board[x][y]=i;
+                if(sol(board)) return true;
+                else board[x][y]='.';
+            }
+        }
+            return 0;
+        }
+        }
+    void solveSudoku(vector<vector<char>>& board) {
+       if( sol(board)) return;
+    }
+};
