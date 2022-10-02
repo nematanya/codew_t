@@ -1,23 +1,23 @@
 class Solution {
 public:
-    int gi=0;
-    int gj=0;
-    bool allfilled(vector<vector<char>>& board)
-    {
-        for(int i=0;i<9;i++)
-        {
-            for(int j=0;j<9;j++)
-            {
-                if(board[i][j]=='.')
-                {
-                    gi=i;
-                    gj=j;
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+    // int gi=0;
+    // int gj=0;
+    // bool allfilled(vector<vector<char>>& board)
+    // {
+    //     for(int i=0;i<9;i++)
+    //     {
+    //         for(int j=0;j<9;j++)
+    //         {
+    //             if(board[i][j]=='.')
+    //             {
+    //                 gi=i;
+    //                 gj=j;
+    //                 return false;
+    //             }
+    //         }
+    //     }
+    //     return true;
+    // }
     bool issafe(int xi,int xj,char i,vector<vector<char>>& board)
     {
         //row
@@ -43,9 +43,9 @@ public:
         return 1;
     }
     bool sol(vector<vector<char>>& board){
-        if(allfilled(board)) return true;
-        else{
-            int x=gi,y=gj;
+     for(int x=0;x<9;x++)
+     {for(int y=0;y<9;y++){
+         if(board[x][y]=='.'){
         for(char i='1';i<='9';i++)
         {
             if(issafe(x,y,i,board))
@@ -55,9 +55,11 @@ public:
                 else board[x][y]='.';
             }
         }
-            return 0;
+          return false;
         }
-        }
+     }
+        } return true;;
+    }
     void solveSudoku(vector<vector<char>>& board) {
        if( sol(board)) return;
     }
