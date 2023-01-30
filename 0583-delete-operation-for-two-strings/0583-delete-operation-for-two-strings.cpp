@@ -16,23 +16,6 @@ public:
             }
         }
         int t=dp[n][m];
-        // string ans(t,'$');
-        // int i=n,j=m;
-        // int index=t-1;
-        // while(i>0 and j>0)
-        // {
-        //  if(s1[i-1]==s2[j-1])
-        //  {
-        //      ans[index]=s1[i-1];
-        //      i--;
-        //      j--;
-        //      index--;
-        //  }
-        //     else if(dp[i-1]>dp[j])
-        //         i--;
-        //     else 
-        //     j--;
-        // }
         return n+m-(2*t);
         
     }
