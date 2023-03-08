@@ -1,38 +1,24 @@
 class Solution {
 public:
-
-    bool ispossible(int m, vector<int> & piles, int h)
+    bool sol(vector<int> &piles,int mid,int h)
     {
-        int c=0;
-        for(int i=0;i<piles.size();i++)
+        int tot=0;
+        for(auto it:piles)
         {
-            c+=(piles[i]/m);
-            if(piles[i]%m>0)
-            c++;
+            tot+=(it/mid);
+            if(it%mid!=0)tot++;
         }
-       // cout<<m<<" "<<c<<endl;
-        if(c<=h)
-        return true;
-        return false;
+        return tot<=h;
     }
-    int minEatingSpeed(vector<int>& piles, int h) 
-    {
-     sort(piles.begin(),piles.end());
-     int len = piles.size();
-     int ans = piles[len-1];
-     int l = 1;
-     while(l<ans)
-     {
-         int m = l + (ans-l)/2;
-         if(ispossible(m,piles,h))
-         {
-            ans=m;
-         }
-         else
-         {
-             l=m+1;
-         }
-     }
-     return ans;
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int e=*max_element(piles.begin(),piles.end());
+        int s=1;
+        while(s<e)
+        {
+            int m=s+(e-s)/2;
+            if(sol(piles,m,h)) e=m;
+            else s=m+1;
+        }
+        return e;
     }
 };
