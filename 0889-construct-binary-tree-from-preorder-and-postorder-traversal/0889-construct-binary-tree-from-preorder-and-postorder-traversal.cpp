@@ -18,9 +18,9 @@ public:
         TreeNode* root=new TreeNode(pre[pres]);
             if(pres==pree)return root;
         int idx=mp[pre[pres+1]];
-        int dis=idx-posts;
-        root->left=sol(pre,pres+1,pres+dis+1,post,posts,idx,mp);
-        root->right=sol(pre,pres+1+dis+1,pree,post,idx+1,poste,mp);
+        int dis=idx-posts+1;
+        root->left=sol(pre,pres+1,pres+dis,post,posts,idx,mp);
+        root->right=sol(pre,pres+1+dis,pree,post,idx+1,poste,mp);
         return root;
     }
     TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& post) {
