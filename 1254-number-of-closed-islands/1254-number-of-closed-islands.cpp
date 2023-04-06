@@ -7,12 +7,15 @@ public:
         if(i<0 or j<0 or i>=m or j>=n ) return false;
         if(grid[i][j]==1) return true;
         grid[i][j]=1;
-
-             bool d1 = dfs(i+1, j,m,n,grid);
-        bool d2 = dfs( i, j+1,m,n,grid);
-        bool d3 = dfs( i-1, j,m,n,grid);
-        bool d4 = dfs( i, j-1,m,n,grid);
-        return d1 && d2 && d3 && d4;
+        bool flag=true;
+        for(int p=0;p<4;p++)
+        {
+            
+                int nx=i+dx[p];
+                int ny=j+dy[p];
+                flag&=dfs(nx,ny,m,n,grid);
+        }
+        return flag;
     }
     int closedIsland(vector<vector<int>>& grid) {
     int m=grid.size(),n=grid[0].size();
