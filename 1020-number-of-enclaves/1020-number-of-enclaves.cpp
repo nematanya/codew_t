@@ -32,7 +32,7 @@ public:
         }
         for(int i=0;i<m;i++)
         {
-                        if(!vis[0][i] and board[0][i]==1)
+             if(!vis[0][i] and board[0][i]==1)
                 dfs(0,i,vis,board,dx,dy);
                 if(!vis[n-1][i] and board[n-1][i]==1)
                     dfs(n-1,i,vis,board,dx,dy);
