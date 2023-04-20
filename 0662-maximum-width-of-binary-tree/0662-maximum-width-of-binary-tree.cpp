@@ -36,19 +36,11 @@ public:
             TreeNode* nodee=temp.first;
               int ind=temp.second-s;  
              if(nodee->left)
-             {
                  q.push({nodee->left,2ll*ind+1});
-             }
                 if(nodee->right)
-             {
                  q.push({nodee->right,2ll*ind+2});
-             }
-            }
-            
-                
+            }   
             } 
-  
-
         return res;
     }
 };
