@@ -9,27 +9,54 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
-    int recur(TreeNode* root, long long target) {
-        if (root == nullptr)
-            return 0;
+    int recur(TreeNode* root, long long target)
+{
+  
+        
+if(root==NULL)return 0;
+          int a=0,b=0;
+ if(root->val==target) a++;
+ 
+a+=recur(root->left,target-root->val);
 
-        int count = 0;
-        if (root->val == target)
-            count++;
+ b+=recur(root->right,target-root->val);
+return a+b;
 
-        count += recur(root->left, target - root->val);
-        count += recur(root->right, target - root->val);
-
-        return count;
-    }
-
+}
     int pathSum(TreeNode* root, int targetSum) {
-        if (root == nullptr)
-            return 0;
+        if(root==NULL)return 0;
+   return recur(root,targetSum)+pathSum(root->left,targetSum)+pathSum(root->right,targetSum);
 
-        return recur(root, targetSum) + pathSum(root->left, targetSum) + pathSum(root->right, targetSum);
+    
     }
+
 };
+// class Solution {
+// public:
+//     int recur(TreeNode* root, long long target) {
+//         if (root == nullptr)
+//             return 0;
+
+//         int count = 0;
+//         if (root->val == target)
+//             count++;
+
+//         count += recur(root->left, target - root->val);
+//         count += recur(root->right, target - root->val);
+
+//         return count;
+//     }
+
+//     int pathSum(TreeNode* root, int targetSum) {
+//         if (root == nullptr)
+//             return 0;
+
+//         int countFromRoot = recur(root, targetSum);
+//         int countFromLeft = pathSum(root->left, targetSum);
+//         int countFromRight = pathSum(root->right, targetSum);
+
+//         return countFromRoot + countFromLeft + countFromRight;
+//     }
+// };
