@@ -17,7 +17,7 @@ public:
         
 if(root==NULL)return 0;
           int a=0,b=0;
- if(root->val==target) a++;
+ if(root->val==target) b++;
  
 a+=recur(root->left,target-root->val);
 
@@ -33,30 +33,3 @@ return a+b;
     }
 
 };
-// class Solution {
-// public:
-//     int recur(TreeNode* root, long long target) {
-//         if (root == nullptr)
-//             return 0;
-
-//         int count = 0;
-//         if (root->val == target)
-//             count++;
-
-//         count += recur(root->left, target - root->val);
-//         count += recur(root->right, target - root->val);
-
-//         return count;
-//     }
-
-//     int pathSum(TreeNode* root, int targetSum) {
-//         if (root == nullptr)
-//             return 0;
-
-//         int countFromRoot = recur(root, targetSum);
-//         int countFromLeft = pathSum(root->left, targetSum);
-//         int countFromRight = pathSum(root->right, targetSum);
-
-//         return countFromRoot + countFromLeft + countFromRight;
-//     }
-// };
